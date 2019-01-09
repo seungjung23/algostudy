@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="new.cpp">
+    <ClCompile Include="picnic.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="new2.cpp">
+    <ClCompile Include="game.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
