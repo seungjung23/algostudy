@@ -3,14 +3,6 @@ int map[20][20];
 int n, m, ans, cnt;
 
 
-//const int coverType[4][3][2] =
-//{
-//	{{0, -1}, {0, 0}, {-1, 0}},  	//  ¦¥ 1
-//	{{0, -1}, {0, 0}, {1,  0}}, 	// ¦¦  2
-//	{{0, 1},  {0, 0}, {-1, 0}}, 	//  ¦¤ 3
-//	{{0, 1},  {0, 0}, {1,  0}}		// ¦£  4
-//};
-
 void fill(int a, int b, int t)
 {
 	/*for (int i = 0; i < n; i++)
@@ -33,45 +25,44 @@ void fill(int a, int b, int t)
 	for (int i = a; i < n; i++)
 		for (int j = 0; j < m; j++)
 		{
-			if ((i == a) && j <= b) continue;
 			
 			if (map[i][j] == 0)
 			{
 				x = j, y = i;
 				//1
-				if (!map[y - 1][x] && !map[y][x - 1] && (y - 1) >= 0 && (x - 1) >= 0)
-				{
-					map[y - 1][x] = t + 1;
-					map[y][x] = t + 1;
-					map[y][x - 1] = t + 1;
-					fill(y, x, t + 1);
-					map[y - 1][x] = 0;
-					map[y][x] = 0;
-					map[y][x - 1] = 0;
-				}
-
-				//2
-				if (!map[y - 1][x] && !map[y][x + 1] && (y - 1) >= 0 && (x + 1) < m)
-				{
-					map[y - 1][x] = t + 1;
-					map[y][x] = t + 1;
-					map[y][x + 1] = t + 1;
-					fill(y, x, t + 1);
-					map[y - 1][x] = 0;
-					map[y][x] = 0;
-					map[y][x + 1] = 0;
-				}
-
-				//3
-				if (!map[y + 1][x] && !map[y][x - 1] && (y + 1) < n && (x - 1) >= 0)
+				if (!map[y + 1][x] && !map[y + 1][x - 1] && (y + 1) < n && (x - 1) >= 0)
 				{
 					map[y + 1][x] = t + 1;
 					map[y][x] = t + 1;
-					map[y][x - 1] = t + 1;
+					map[y + 1][x - 1] = t + 1;
 					fill(y, x, t + 1);
 					map[y + 1][x] = 0;
 					map[y][x] = 0;
-					map[y][x - 1] = 0;
+					map[y + 1][x - 1] = 0;
+				}
+
+				//2
+				if (!map[y + 1][x] && !map[y + 1][x + 1] && (y + 1) < n && (x + 1) < m)
+				{
+					map[y + 1][x] = t + 1;
+					map[y][x] = t + 1;
+					map[y + 1][x + 1] = t + 1;
+					fill(y, x, t + 1);
+					map[y + 1][x] = 0;
+					map[y][x] = 0;
+					map[y + 1][x + 1] = 0;
+				}
+
+				//3
+				if (!map[y + 1][x + 1] && !map[y][x + 1] && (y + 1) < n && (x + 1) < m)
+				{
+					map[y + 1][x + 1] = t + 1;
+					map[y][x] = t + 1;
+					map[y][x + 1] = t + 1;
+					fill(y, x, t + 1);
+					map[y + 1][x + 1] = 0;
+					map[y][x] = 0;
+					map[y][x + 1] = 0;
 				}
 
 				//4

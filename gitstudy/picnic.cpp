@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <time.h>
 int checknum[10]; //이미 짝이 지어졌는지 확인하는 배열
 int map[10][10]; //친구를 확인하는 map
 int ans;
@@ -40,13 +40,15 @@ int main()
 {
 	int t;
 	scanf("%d", &t);
-	
+	clock_t start, end;
+	start = clock();
 
 	for (int tc = 1; tc <= t; tc++)
 	{
 		ans = 0;
 		int num;
 		scanf("%d %d", &n, &num);
+		
 		tn = n / 2;
 
 		
@@ -66,8 +68,9 @@ int main()
 	
 		
 		match(0);
-		
 		printf("#%d %d\n", tc, ans);	
 	}
+	end = clock();
+	printf("time : %f\n", (double)(end - start));
 }
 
