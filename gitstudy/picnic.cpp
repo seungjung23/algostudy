@@ -9,7 +9,7 @@ int tn; //짝의 수 n/2
 void match(int cnt) //cnt 몇번째, up -이상의 숫자 고르기
 {
 	
-	if (cnt == tn - 1) // 모든 짝이 정해졌을 때
+	if (cnt == tn) // 모든 짝이 정해졌을 때
 	{
 		ans++; return;
 	}

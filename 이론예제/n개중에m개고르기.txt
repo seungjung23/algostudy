@@ -1,0 +1,40 @@
+#include <stdio.h>
+int n;
+int m;
+int choose[10];
+
+void recur(int cnt, int up) //cnt 몇번째, up -이상의 숫자 고르기
+{
+
+
+	if (m == cnt)
+	{
+		choose[cnt] = up;
+
+		for (int i = 0; i < m; i++)
+			printf("%d ", choose[i]);
+		printf("\n"); return;
+	}
+
+
+	for (int j = up; j <= n - m + cnt; j++)
+	{
+		choose[cnt] = j;
+		recur(cnt + 1, j + 1);
+	}
+
+	return;
+}
+
+
+int main()
+{
+	 //총 원소의 갯수 0 ~ n-1
+	scanf("%d", &n);
+	 //고를 원소의 갯수
+	scanf("%d", &m);
+
+	recur(0, 0);
+
+	return 0;
+}
