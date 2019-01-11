@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <time.h>
+
 int checknum[10]; //이미 짝이 지어졌는지 확인하는 배열
 int map[10][10]; //친구를 확인하는 map
 int ans;
 int n, m;
 int tn; //짝의 수 n/2
+
 
 void match(int cnt) //cnt 몇번째, up -이상의 숫자 고르기
 {
@@ -30,6 +32,10 @@ void match(int cnt) //cnt 몇번째, up -이상의 숫자 고르기
 			flag = 1;
 		}
 	}
+	if (flag == 0)
+	{
+		ans = -1; return;
+	}
 
 	
 	return;
@@ -40,8 +46,8 @@ int main()
 {
 	int t;
 	scanf("%d", &t);
-	clock_t start, end;
-	start = clock();
+	//clock_t start, end;
+	//start = clock();
 
 	for (int tc = 1; tc <= t; tc++)
 	{
@@ -51,7 +57,6 @@ int main()
 		
 		tn = n / 2;
 
-		
 		for (int i = 0; i < n; i++)
 			for (int j = 0; j < n; j++)
 			{
@@ -60,17 +65,19 @@ int main()
 			}
 
 		int tmpa, tmpb;
+
+		while (getchar() != '\n');
+
 		for (int i = 0; i < num; i++)
 		{
 			scanf("%d %d", &tmpa, &tmpb);
 			map[tmpa][tmpb] = map[tmpb][tmpa] = 1;
 		}
 	
-		
 		match(0);
-		printf("#%d %d\n", tc, ans);	
+		printf("%d\n", ans);	
 	}
-	end = clock();
-	printf("time : %f\n", (double)(end - start));
+	//end = clock();
+	//printf("time : %f\n", (double)(end - start));
 }
 
