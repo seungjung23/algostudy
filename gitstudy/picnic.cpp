@@ -19,7 +19,7 @@ void match(int cnt) //cnt 몇번째, up -이상의 숫자 고르기
 	int tmp = 0;
 	while (!checknum[tmp])
 		tmp++;
-	int flag = 0;
+
 	for (int j = tmp + 1; j < n; j++)
 	{
 		if (map[tmp][j] == 1 && checknum[j])
@@ -29,15 +29,9 @@ void match(int cnt) //cnt 몇번째, up -이상의 숫자 고르기
 			match(cnt + 1);
 			checknum[tmp] = 1;
 			checknum[j] = 1;
-			flag = 1;
 		}
 	}
-	if (flag == 0)
-	{
-		ans = -1; return;
-	}
 
-	
 	return;
 }
 

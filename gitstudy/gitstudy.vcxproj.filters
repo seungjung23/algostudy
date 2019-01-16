@@ -27,5 +27,14 @@
     <ClCompile Include="leavecompany.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="quadtree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="fence.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
