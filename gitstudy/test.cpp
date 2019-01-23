@@ -1,59 +1,38 @@
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string>
-#include <vector>
 
-#include <time.h>
 using namespace std;
 
-vector<string> result;
-string str;
+string::iterator iter;
+char cur;
 
-string rvrs_quadTree(int *idx);
+string Decompress()
+{
+	cur = *iter;		// 처음 입력받은 string에서 매번 재귀 들어갈때마다 한칸씩 앞으로 이동시켜줌. 즉, 이동인자에 불과함. 
+	iter++;                         //  모든 입력을 다 확인하면서 함수의 반환형인 string으로 담아버리므로 계속 증가시키며 확인해도됨.
+	if (cur == 'w' || cur == 'b') return string(1, cur);
 
-int main() {
+	string lu = Decompress();				// 1,2,3,4 사분면 순서대로 입력되므로 순서대로 압축해제해야함 
+	string ru = Decompress();
+	string ld = Decompress();
+	string rd = Decompress();
 
-	int T;
-	scanf("%d", &T);
-	clock_t start, end;
-	start = clock();
-	for (int t = 0; t < T; t++) {
-		cin >> str;
-
-		int idx = 0;
-		result.push_back(rvrs_quadTree(&idx));
-	}
-
-	// result print
-	for (int i = 0; i < result.size(); i++) {
-		cout << result[i] << endl;
-	}
-
-	// result free
-	result.clear();
-	
-	end = clock();
-	printf("time : %f\n", (double)(end - start));
+	return "x" + ld + rd + lu + ru;			// 반환할때 3,4,1,2 순서로 뒤집어서 반환 , 문자열을 반환해버리므로 해당 문자열을 다시 순서 변경할 수 있음
 }
 
-string rvrs_quadTree(int *idx) {
 
-	string rst, str1_2, str3_4;
-	// base condition, idx 자리가 x가 아니면
-	if (str[*idx] != 'x') return rst += str[*idx];
+int main() {
+	int tc;
+	scanf("%d", &tc);
 
-	for (int i = 0; i < 4; i++) {		// x빼고 3 4 1 2 순서로 붙이기
-		char temp = str[++(*idx)];
-		if (temp == 'x') {
-			if (i < 2) str1_2 += rvrs_quadTree(idx);
-			else str3_4 += rvrs_quadTree(idx);
-		}
-		else {
-			if (i < 2) str1_2 += temp;
-			else str3_4 += temp;
-		}
+	for (int i = 0; i < tc; i++) {
+		string s;
+		cin >> s;
+		iter = s.begin();
+
+		cout << Decompress() << endl;
 	}
-	return rst = 'x' + str3_4 + str1_2;
 
-
-	
 }

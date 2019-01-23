@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include <iostream>
-#include <cstring>
-
 #define MAX 1001
 
-using namespace std;
 char quad[MAX];
 
 void print(int s, int e)
@@ -23,7 +19,8 @@ void print(int s, int e)
 		}
 
 	if (quad[point] == 'x')
-	{ //x이면나뉘어지는부분을찾고나누어서반전시킴
+	{ 
+		//x이면나뉘어지는부분을찾고나누어서반전시킴
 		int wbcnt = 1;
 		int p1 = 0, p2 = 0, p3 = 0, p4 = 0;
 
@@ -86,9 +83,9 @@ int main()
 
 	for (int tc = 1; tc <= t; tc++)
 	{
-		memset(quad, 0, sizeof(quad));
-		cin >> quad;
+		scanf("%s", &quad);
 		print(0, strlen(quad) - 1);
+		printf("\n");
 	}
 }
 
