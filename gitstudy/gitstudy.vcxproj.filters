@@ -42,5 +42,11 @@
     <ClCompile Include="z.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="quantize.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stringurl.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

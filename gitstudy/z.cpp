@@ -37,7 +37,5 @@ void search(int startr, int startc, int size, int n)
 	
 	search(0, 0, pow(2, n), 0);
 	
-
 	printf("%d\n", ans);
-
 }
