@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include <cstring>
+#include <string.h>
 
 #define INF 987654321
 using namespace std;
